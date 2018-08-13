@@ -1,0 +1,15 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/score/score",
+    "pages/game/game"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#EDECE8",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "小程序",
+    "backgroundColor": "#00B26A",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": false
+  }
+}

@@ -1,0 +1,24 @@
+<!--pages/score/score.wxml-->
+<view class='container score-ctn'>
+  <view class='score-my-ctn'>
+    <!--<image src='{{userInfo.avatarUrl}}' class='score-item-avatarurl' mode='cover'></image>
+      <text class='index-userInfo-nickName'>{{userInfo.nickName}}</text>-->
+    <text>{{myScore}}</text>
+  </view>
+  <scroll-view scroll-y='true' class='score-item-ctn'>
+    <block wx:for='{{scores}}'>
+      <view class='score-item'>
+        <view class='score-item-rank'>
+          <text>{{index+1}}</text>
+        </view>
+        <view class='score-item-userinfo'>
+          <image src='{{item.avatarurl}}' class='score-item-avatarurl' mode='cover'></image>
+          <text>{{item.nickname}}</text>
+        </view>
+        <view class='score-item-mark'>
+          <text>{{item.mark}}</text>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+</view>
