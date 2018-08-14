@@ -10,7 +10,8 @@ Page({
   data: {
     scores: [],
     userInfo: {},
-    myScore: 0
+    myScore: 0,
+    myRank: 1
   },
 
   /**
@@ -33,6 +34,7 @@ Page({
         that.setData({
           userInfo: app.globalData.userInfo,
           myScore: res.data.myscore,
+          myRank: res.data.myrank,
           scores: res.data.scores
         });
       }

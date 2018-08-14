@@ -1,0 +1,9 @@
+<!--pages/victory/victory.wxml-->
+<view wx:if='{{isVictory}}'><text>恭喜你 达到第{{rank}}级啦</text>
+<button type='primary' bindtap='goNext'>下一关</button>
+<button type='primary' bindtap='goIndex'>回首页</button>
+</view>
+<view wx:else>
+<text>闯关失败啦</text>
+<button type='primary' bindtap='goNext'>再玩一局</button>
+</view>

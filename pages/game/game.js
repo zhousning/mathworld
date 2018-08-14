@@ -1,5 +1,6 @@
 const gameUtils = require('./game-utils.js');
 const config = require('../../libs/config.js')
+const app = getApp()
 
 
 Page({
@@ -51,13 +52,21 @@ Page({
 
     if (trueAnswer == answerOption) {
       var score = gameUtils.background_score[that.data.Operator][1];
-      var currentScore = wx.getStorageSync("score");
-      if (currentScore) {
-        currentScore = parseInt(currentScore) + parseInt(score);
-      } else {
-        currentScore = parseInt(score);
+      var currentScore = wx.getStorageSync('score') + score;
+      var rank = wx.getStorageSync('rank');
+      wx.setStorageSync('score', currentScore);
+
+      if (currentScore == config.games.rankScore) {
+        wx.setStorageSync('rank', rank + 1);
+        app.globalData.isVictory = true;
+        wx.redirectTo({
+          url: '../victory/victory',
+        })
       }
-      wx.setStorageSync("score", currentScore);
+    } else {
+      wx.redirectTo({
+        url: '../victory/victory',
+      })
     }
 
     that.data.ActiveTimeOut = setTimeout(function () {

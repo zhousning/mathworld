@@ -4,6 +4,7 @@
     <!--<image src='{{userInfo.avatarUrl}}' class='score-item-avatarurl' mode='cover'></image>
       <text class='index-userInfo-nickName'>{{userInfo.nickName}}</text>-->
     <text>{{myScore}}</text>
+    <text>lv{{myRank}}</text>
   </view>
   <scroll-view scroll-y='true' class='score-item-ctn'>
     <block wx:for='{{scores}}'>
@@ -17,6 +18,9 @@
         </view>
         <view class='score-item-mark'>
           <text>{{item.mark}}</text>
+        </view>
+        <view class='score-item-rank'>
+          <text>{{item.rank}}</text>
         </view>
       </view>
     </block>

@@ -1,4 +1,4 @@
-const config = require('config.js')
+const config = require('libs/config.js')
 
 var appUtil = {
   getOpenId: function(code) {

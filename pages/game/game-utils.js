@@ -1,11 +1,11 @@
 var gameUtil = {
   config: {
-    countDownMax: 20
+    countDownMax: 10
   },
   background_score: {
     "+": ["#008171", 1],
-    "-": ["#237EAD", 2],
-    "×": ["#369445", 5]
+    "-": ["#237EAD", 1],
+    "×": ["#369445", 1]
   },
   getRandom: function(max, min) {
     var random = Math.round(Math.random() * (max - min) + min); //生成n-m，包含n和m的随机数
@@ -116,8 +116,8 @@ var gameUtil = {
         });
         setTimeout(function(){
           wx.redirectTo({
-            url: './game'
-          });
+            url: '../victory/victory',
+          })
         }, 2000);
       }
     }, 1000);

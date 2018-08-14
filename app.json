@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/score/score",
-    "pages/game/game"
+    "pages/game/game",
+    "pages/victory/victory"
   ],
   "window": {
     "navigationBarBackgroundColor": "#EDECE8",

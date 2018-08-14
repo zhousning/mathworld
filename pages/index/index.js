@@ -57,31 +57,8 @@ Page({
         userInfo: e.detail.userInfo,
         hasUserInfo: true
       })
-      wx.navigateTo({
-        url: '../game/game',
-        success: function () {
-          wx.request({
-            url: config.routes.updateUser + wx.getStorageSync('openId'),
-            method: 'PUT',
-            data: {
-              nickname: userInfo.nickName,
-              avatarurl: userInfo.avatarUrl,
-              gender: userInfo.gender,
-              city: userInfo.city,
-              province: userInfo.province,
-              country: userInfo.country,
-              language: userInfo.language
-            },
-            header: {
-              'Accept': "*/*",
-              'content-type': 'application/json' // 默认值
-            },
-            success: function (res) {
-              console.log(res.data.wxuser_status);
-            }
-          })
-        }
-      });
+      appUtils.updateUserInfo(userInfo);
+      appUtils.startGame();
     }
   },
   login: function() {
@@ -93,9 +70,7 @@ Page({
     }
   },
   startGame: function() {
-    wx.navigateTo({
-      url: '../game/game',
-    });
+    appUtils.startGame();
   },
   checkScore: function() {
     appUtils.addScore();

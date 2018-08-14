@@ -6,7 +6,7 @@
       <text class='index-userInfo-nickName'>{{userInfo.nickName}}</text>
     </block>
     <block wx:else>
-      <image src='http://bpic.588ku.com/back_pic/04/55/80/165864cfe194555.jpg!/fh/300/quality/90/unsharp/true/compress/true' class='index-userinfo-avatar' mode='cover'></image>
+      <image src='' class='index-userinfo-avatar' mode='cover'></image>
       <text class='index-userInfo-nickName'>够味烧脑</text>
     </block>
   </view>
