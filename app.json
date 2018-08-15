@@ -1,12 +1,12 @@
 {
   "pages": [
+        "pages/game/game",
     "pages/index/index",
     "pages/score/score",
-    "pages/game/game",
     "pages/victory/victory"
   ],
   "window": {
-    "navigationBarBackgroundColor": "#EDECE8",
+    "navigationBarBackgroundColor": "#FFFFFE",
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "小程序",
     "backgroundColor": "#00B26A",

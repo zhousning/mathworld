@@ -1,8 +1,6 @@
 <!--pages/score/score.wxml-->
 <view class='container score-ctn'>
   <view class='score-my-ctn'>
-    <!--<image src='{{userInfo.avatarUrl}}' class='score-item-avatarurl' mode='cover'></image>
-      <text class='index-userInfo-nickName'>{{userInfo.nickName}}</text>-->
     <text>{{myScore}}</text>
     <text>lv{{myRank}}</text>
   </view>

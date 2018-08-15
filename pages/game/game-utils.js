@@ -73,9 +73,32 @@ var gameUtil = {
     }
     return result;
   },
-  prepareQuestion: function(that) {
-    var pa = gameUtil.getRandom(1, 100);
-    var pb = gameUtil.getRandom(1, 100);
+  prepareQuestion: function(that, rank) {
+    var pa = 0;
+    var pb = 0;
+
+    rank = rank || gameUtil.getRandom(1, 5);//避免rank取不到
+    if (1<= rank && rank <= 4) {
+      pa = gameUtil.getRandom(1, 9);
+      pb = gameUtil.getRandom(Math.pow(10, rank-1), Math.pow(10, rank)-1);
+    } else if (5 <= rank && rank <= 7) {
+      pa = gameUtil.getRandom(10, 99);
+      pb = gameUtil.getRandom(Math.pow(10, rank - 4), Math.pow(10, rank - 3) - 1);
+    } else if (8 <= rank && rank <=9) {
+      pa = gameUtil.getRandom(100, 999);
+      pb = gameUtil.getRandom(Math.pow(10, rank - 6), Math.pow(10, rank - 5) - 1);
+    } else {
+      pa = gameUtil.getRandom(1000, 9999);
+      pb = gameUtil.getRandom(Math.pow(10, rank - 7), Math.pow(10, rank - 6) - 1);
+    }
+
+    var rd = gameUtil.getRandom(1, 10);
+    if (rd > 5) {
+      var t = pa;
+      pa = pb;
+      pb = t;
+    }
+
     var op = gameUtil.getOperator();
     var ta = gameUtil.calculateResult(op, pa, pb);
     var bg = gameUtil.background_score[op][0];
@@ -115,15 +138,18 @@ var gameUtil = {
           active: -1
         });
         setTimeout(function(){
+          var app = getApp();
+          app.globalData.isVictory = false;
           wx.redirectTo({
             url: '../victory/victory',
           })
-        }, 2000);
+        }, 1000);
       }
     }, 1000);
   },
   prepareData: function(that) {
-    gameUtil.prepareQuestion(that);
+    var rank = wx.getStorageSync('rank');
+    gameUtil.prepareQuestion(that, rank);
     gameUtil.startCountDown(that);
   },
   stopCountDown: function(that) {

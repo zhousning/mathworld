@@ -32,7 +32,6 @@ Page({
       },
       success: function(res) {
         that.setData({
-          userInfo: app.globalData.userInfo,
           myScore: res.data.myscore,
           myRank: res.data.myrank,
           scores: res.data.scores

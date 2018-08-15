@@ -24,7 +24,7 @@ App({
     })
   },
   onHide: function() {
-    appUtils.addScore();
+    //appUtils.addScore();
   },
 
   globalData: {

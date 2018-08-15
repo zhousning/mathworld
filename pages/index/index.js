@@ -48,6 +48,9 @@ Page({
       })
     }
   },
+  onShow: function() {
+    appUtils.addScore();
+  },
   getUserInfo: function(e) {
     var userInfo = app.globalData.userInfo = e.detail.userInfo
     //var encryptedData = e.detail.encryptedData;
@@ -73,7 +76,6 @@ Page({
     appUtils.startGame();
   },
   checkScore: function() {
-    appUtils.addScore();
     wx.navigateTo({
       url: '../score/score'
     });

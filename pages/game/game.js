@@ -22,7 +22,8 @@ Page({
   },
   onLoad: function(options) {
     var that = this;
-    gameUtils.prepareQuestion(that);
+    var rank = wx.getStorageSync('rank');
+    gameUtils.prepareQuestion(that, parseInt(rank));
   },
   //redirectTo or navigatBack
   onUnload: function() {
@@ -37,7 +38,7 @@ Page({
   },
   onShow: function() {
     var that = this;
-    gameUtils.startCountDown(that);
+    //gameUtils.startCountDown(that);
   },
   checkAnswer: function(e) {
     var that = this;
@@ -50,6 +51,12 @@ Page({
       active: index
     })
 
+    that.data.ActiveTimeOut = setTimeout(function() {
+      that.setData({
+        active: -1
+      })
+    }, 300);
+
     if (trueAnswer == answerOption) {
       var score = gameUtils.background_score[that.data.Operator][1];
       var currentScore = wx.getStorageSync('score') + score;
@@ -58,37 +65,38 @@ Page({
 
       if (currentScore == config.games.rankScore) {
         wx.setStorageSync('rank', rank + 1);
-        app.globalData.isVictory = true;
+        that.data.RedirectTimeOut = setTimeout(function() {
+          app.globalData.isVictory = true;
+          wx.redirectTo({
+            url: '../victory/victory',
+          })
+        }, 1000);
+        return;
+      }
+    } else {
+      that.data.RedirectTimeOut = setTimeout(function() {
+        app.globalData.isVictory = false;
         wx.redirectTo({
           url: '../victory/victory',
         })
-      }
-    } else {
-      wx.redirectTo({
-        url: '../victory/victory',
-      })
+      }, 1000);
+      return;
     }
 
-    that.data.ActiveTimeOut = setTimeout(function () {
-      that.setData({
-        active: -1
-      })
-    }, 500);
-
-    that.data.RedirectTimeOut = setTimeout(function () {
+    that.data.RedirectTimeOut = setTimeout(function() {
       wx.redirectTo({
         url: './game',
-        success: function () {
+        success: function() {
           gameUtils.stopCountDown(that);
         }
       })
-    }, 2000);
+    }, 1000);
   },
   getNextQuestion: function() {
     wx.navigateBack({
-      
+
     });
   }
- 
+
 
 })
