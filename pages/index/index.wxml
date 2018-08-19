@@ -1,4 +1,4 @@
-<view class='container index-ctn'>
+<view class='container app-ctn-img page-ctn'>
   <view class='index-userinfo-container'>
     <!--<button wx:if='{{!hasUserInfo && canIUse}}' open-type="getUserInfo" bindgetuserinfo='getUserInfo'>授权登录</button> -->
     <block wx:if='{{hasUserInfo}}'>

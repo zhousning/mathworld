@@ -103,8 +103,9 @@ var appUtil = {
       }
     })
   },
-  startGame: function() {
+  startGame: function(obj) {
     var openid = wx.getStorageSync('openId');
+    var goGame = obj.goGame;
     wx.setStorageSync('score', 0)
     var rank = wx.getStorageSync('rank');
     if (!rank) {
@@ -124,9 +125,7 @@ var appUtil = {
         }
       })
     }
-    wx.navigateTo({
-      url: '../game/game',
-    });
+    goGame();
   },
   addScore: function() {
     var score = wx.getStorageSync('score');

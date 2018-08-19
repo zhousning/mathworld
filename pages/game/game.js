@@ -11,12 +11,11 @@ Page({
     Score: 0,
     AnswerOptions: [],
     TrueAnswer: 0,
-    GameBackground: '#728D98',
+    GameBackground: '',
     CountDown: 0,
     ProgressValue: 0,
     Timer: null,
     time: gameUtils.config.countDownMax,
-    AnswerStatus: 0,
     ActiveTimeOut: 0,
     RedirectTimeOut: 0,
   },
@@ -38,25 +37,19 @@ Page({
   },
   onShow: function() {
     var that = this;
-    //gameUtils.startCountDown(that);
+    gameUtils.startCountDown(that);
   },
   checkAnswer: function(e) {
     var that = this;
     var trueAnswer = e.currentTarget.dataset.trueAnswer;
     var answerOption = e.currentTarget.dataset.answerOption;
     var index = e.currentTarget.dataset.answerIndex;
-    var active = 'active' + index;
 
     that.setData({
-      active: index
+      ActiveIndex: index,
+      active: -1
     })
-
-    that.data.ActiveTimeOut = setTimeout(function() {
-      that.setData({
-        active: -1
-      })
-    }, 300);
-
+    
     if (trueAnswer == answerOption) {
       var score = gameUtils.background_score[that.data.Operator][1];
       var currentScore = wx.getStorageSync('score') + score;
@@ -91,12 +84,5 @@ Page({
         }
       })
     }, 1000);
-  },
-  getNextQuestion: function() {
-    wx.navigateBack({
-
-    });
   }
-
-
 })

@@ -1,1 +1,58 @@
-/* pages/victory/victory.wxss */
+.victory-success-ctn {
+  color: white;
+  background-size: 200% auto;
+  background-image: linear-gradient(to right, #4bccf3 0%, #50adf3 20%);
+}
+
+.victory-fail-ctn {
+  color: white;
+  background-size: 200% auto;
+  background-image: linear-gradient(to right, #ffa280 0%, #ff5152 50%);
+}
+
+.victory-status-ctn {
+  flex-grow: 1;
+    display: flex;
+    flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.victory-operator-ctn {
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.victory-success-status {
+  width: 150rpx;
+  height: 150rpx;
+  padding: 75rpx;
+  border: 15rpx solid white;
+  font-size: 65rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  margin-bottom: 30rpx
+}
+
+.victory-rank-status {
+  text-align: center;
+}
+
+.victory-btn {
+  width: 350rpx;
+  height: 120rpx;
+  color: white;
+  background: transparent;
+  border: 1rpx solid white;
+  text-align: center;
+  box-shadow: 0 0 20px #eee;
+  font-size: 45rpx;
+  font-weight: lighter;
+}
+
+.victory-next-btn {
+  margin-bottom: 70rpx;
+}

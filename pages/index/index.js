@@ -61,7 +61,13 @@ Page({
         hasUserInfo: true
       })
       appUtils.updateUserInfo(userInfo);
-      appUtils.startGame();
+      appUtils.startGame({
+        goGame: function () {
+          wx.navigateTo({
+            url: '../game/game',
+          });
+        }
+      });
     }
   },
   login: function() {
@@ -73,7 +79,13 @@ Page({
     }
   },
   startGame: function() {
-    appUtils.startGame();
+    appUtils.startGame({
+      goGame: function () {
+        wx.navigateTo({
+          url: '../game/game',
+        });
+      }
+    });
   },
   checkScore: function() {
     wx.navigateTo({

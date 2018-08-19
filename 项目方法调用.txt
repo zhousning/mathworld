@@ -1,0 +1,23 @@
+appUtils.addScore 更新成绩调用
+
+到达game的途径， 以下两个路径都需要调用startGame（开始游戏之前，获取基础成绩数据）
+    index通过navigatTo方法
+   victory：如果victory仍旧使用navigatTo game页面，多次调用之后，page栈里面会存在多个未被销毁的victory页面，用户需要多次返回才能到达首页，所以要使用redirect To  或采用按下按钮后要销毁当前victory页面（没找到方法）
+在startGame里面添加goGame，传入不同的调用函数   
+
+game  checkAnswer  设置成绩数据
+
+加分addScore
+   中途前后台切换不计分，暂时先将app onHide加分注掉。由game navigatback后要计分， 由game页离开到其他页面需要计算分数
+   index onshow
+   victory onshow 战果页面
+
+game页面的行为
+navigatBack
+  首页
+redirectTo（超时、错误 | 过关）要设置isVictory，victory页面需要显示的内容
+超时isVictory=false
+错误isVictory=false
+  失败----victory fail
+过关isVictory=true
+  过关----victory success

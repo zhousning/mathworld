@@ -1,9 +1,12 @@
 {
   "pages": [
-        "pages/game/game",
-    "pages/index/index",
-    "pages/score/score",
-    "pages/victory/victory"
+              "pages/index/index",
+            "pages/victory/victory",
+ 
+
+            "pages/game/game",
+    "pages/score/score"
+
   ],
   "window": {
     "navigationBarBackgroundColor": "#FFFFFE",

@@ -3,9 +3,9 @@ var gameUtil = {
     countDownMax: 10
   },
   background_score: {
-    "+": ["#008171", 1],
-    "-": ["#237EAD", 1],
-    "×": ["#369445", 1]
+    "+": ["to right, #f6d365 0%, #fda085 51%, #f6d365 100%", 1],
+    "-": ["to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%", 1],
+    "×": ["to right, #84fab0 0%, #8fd3f4 51%, #84fab0 100%", 1]
   },
   getRandom: function(max, min) {
     var random = Math.round(Math.random() * (max - min) + min); //生成n-m，包含n和m的随机数
@@ -107,7 +107,6 @@ var gameUtil = {
       ParamA: pa,
       ParamB: pb,
       Operator: op,
-      AnswerStatus: 0,
       TrueAnswer: ta,
       GameBackground: bg,
       Score: sc,

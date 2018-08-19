@@ -1,28 +1,37 @@
-.game-countdown-ctn {
+.game-question-ctn {
+  flex-grow: 1;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: white;
+  background-size: 200% auto;
   color: white;
-  flex-grow: 3;
+    box-shadow: 0 0 20px #eee;
+
+}
+
+.game-countdown-text {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 50rpx;
 }
 
-.game-question-ctn {
-  flex-grow: 3;
+.game-question-text {
   display: flex;
   width: 100%;
   align-items: flex-end;
   justify-content: center;
   background: 3;
-  color: white;
   font-weight: 47;
   font-size: 85rpx;
   letter-spacing: 13rpx;
 }
 
 .game-answer-ctn {
-  flex-grow: 3;
+  flex-grow: 1;
   display: flex;
   flex-flow: row wrap;
   width: 100%;
@@ -34,10 +43,9 @@
   width: 300rpx;
   height: 300rpx;
   position: relative;
-  perspective: 1000px;
-  border: 1rpx solid #d6d6d6;
   font-size: 70rpx;
-  color: #5f5f5f;
+  color: #6b6b6b;
+
 }
 
 .game-answer-option {
@@ -46,12 +54,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: 1s;
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
-}
-
-.game-option-front {
+    border-radius:50%;
+  background-size:100% atuo;
 }
 
 .game-option-opposite {
@@ -61,12 +65,23 @@
   transform: rotateY(180deg);
 }
 
+.game-option-success {
+  color: white;
+background-image:linear-gradient(45deg, #00FF99 10%, #00CC99 100%);
+}
+
+.game-option-error {
+    color: white;
+background-image:linear-gradient(45deg, #FF9E7E 100%, #FF5253 100%);
+
+}
+
 .game-option-front-active {
-  transform: rotateY(180deg);
+  display: none;
 }
 
 .game-option-opposite-active {
-  transform: rotateY(0deg);
+  display: flex
 }
 
 .game-answer-status {

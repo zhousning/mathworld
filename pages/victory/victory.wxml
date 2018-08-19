@@ -1,11 +1,22 @@
 <!--pages/victory/victory.wxml-->
-<view wx:if='{{isVictory}}'>
-  <text>恭喜你 达到第{{rank}}级啦</text>
-  <button type='primary' bindtap='goNext'>下一关</button>
-  <button type='primary' bindtap='goIndex'>回首页</button>
-</view>
-<view wx:else>
-  <text>闯关失败啦</text>
-  <button type='primary' bindtap='goNext'>再玩一局</button>
-  <button type='primary' bindtap='goIndex'>回首页</button>
+<view class="container {{isVictory ? 'victory-success-ctn' : 'victory-fail-ctn'}} ">
+  <view class='victory-status-ctn'>
+    <view class='victory-success-status'>
+      <text wx:if='{{isVictory}}'>过关</text>
+      <text wx:else>失败</text>
+    </view>
+    <view class='victory-rank-status'>
+      <text>当前 {{rank}} 级</text>
+    </view>
+  </view>
+  <view class='victory-operator-ctn'>
+    <block wx:if='{{isVictory}}'>
+      <button class='victory-btn victory-next-btn' bindtap='goNext'>开启下一关</button>
+      <button class='victory-btn victory-inex-btn' bindtap='goIndex'>休息一下</button>
+    </block>
+    <block wx:else>
+      <button class='victory-btn victory-next-btn' bindtap='goNext'>再玩一局</button>
+      <button class='victory-btn victory-inex-btn' bindtap='goIndex'>休息一下</button>
+    </block>
+  </view>
 </view>
