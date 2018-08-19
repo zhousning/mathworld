@@ -133,16 +133,9 @@ var gameUtil = {
       });
       if (time == 0) {
         gameUtil.stopCountDown(that);
-        that.setData({
-          active: -1
-        });
-        setTimeout(function(){
-          var app = getApp();
-          app.globalData.isVictory = false;
-          wx.redirectTo({
-            url: '../victory/victory',
-          })
-        }, 1000);
+        wx.redirectTo({
+          url: '../victory-fail/victory-fail',
+        })
       }
     }, 1000);
   },

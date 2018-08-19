@@ -14,7 +14,8 @@ var configs = {
     getRank: 'http://192.168.8.188:3000/scores/get_rank'*/
   },
   games: {
-    rankScore: 10
+    rankScore: 10,
+    changeQuestionTime: 100
   }
 }
 

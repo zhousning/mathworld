@@ -12,8 +12,8 @@
 
 .victory-status-ctn {
   flex-grow: 1;
-    display: flex;
-    flex-flow: column;
+  display: flex;
+  flex-flow: column;
   justify-content: center;
   align-items: center;
 }
@@ -34,23 +34,11 @@
   justify-content: center;
   align-items: center;
   border-radius: 100%;
-  margin-bottom: 30rpx
+  margin-bottom: 30rpx;
 }
 
 .victory-rank-status {
   text-align: center;
-}
-
-.victory-btn {
-  width: 350rpx;
-  height: 120rpx;
-  color: white;
-  background: transparent;
-  border: 1rpx solid white;
-  text-align: center;
-  box-shadow: 0 0 20px #eee;
-  font-size: 45rpx;
-  font-weight: lighter;
 }
 
 .victory-next-btn {

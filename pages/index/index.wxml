@@ -1,4 +1,4 @@
-<view class='container app-ctn-img page-ctn'>
+<view class='container'>
   <view class='index-userinfo-container'>
     <!--<button wx:if='{{!hasUserInfo && canIUse}}' open-type="getUserInfo" bindgetuserinfo='getUserInfo'>授权登录</button> -->
     <block wx:if='{{hasUserInfo}}'>
@@ -10,13 +10,9 @@
       <text class='index-userInfo-nickName'>够味烧脑</text>
     </block>
   </view>
-  <view wx:if='{{hasOpenId}}' class='index-operator-ctn'>
-    <button wx:if='{{!hasUserInfo && canIUse}}' class='index-start-game-btn' type='primary' open-type="getUserInfo" bindgetuserinfo='getUserInfo'>开始烧脑</button>
-    <button wx:else class='index-start-game-btn' type='primary' bindtap='startGame'>开始烧脑</button>
-    <button class='index-check-score-btn' type='primary' bindtap='checkScore'>烧脑排行</button>
-  </view>
-  <view wx:else>
-    <!--处理用户拒绝登录的情况，目前没实现 -->
-    <button type='primary' bindtap='login'>开启登录</button>
+  <view class='index-operator-ctn'>
+    <button wx:if='{{!hasUserInfo && canIUse}}' class='index-start-game-btn index-btn' open-type="getUserInfo" bindgetuserinfo='getUserInfo'>开始烧脑</button>
+    <button wx:else class='index-start-game-btn index-btn' bindtap='startGame'>开始烧脑</button>
+    <button class='index-check-score-btn index-btn' bindtap='checkScore'>烧脑排行</button>
   </view>
 </view>

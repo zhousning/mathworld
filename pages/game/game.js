@@ -46,8 +46,7 @@ Page({
     var index = e.currentTarget.dataset.answerIndex;
 
     that.setData({
-      ActiveIndex: index,
-      active: -1
+      ActiveIndex: index
     })
     
     if (trueAnswer == answerOption) {
@@ -59,20 +58,18 @@ Page({
       if (currentScore == config.games.rankScore) {
         wx.setStorageSync('rank', rank + 1);
         that.data.RedirectTimeOut = setTimeout(function() {
-          app.globalData.isVictory = true;
           wx.redirectTo({
-            url: '../victory/victory',
+            url: '../victory-success/victory-success',
           })
-        }, 1000);
+        }, config.games.changeQuestionTime);
         return;
       }
     } else {
       that.data.RedirectTimeOut = setTimeout(function() {
-        app.globalData.isVictory = false;
         wx.redirectTo({
-          url: '../victory/victory',
+          url: '../victory-fail/victory-fail',
         })
-      }, 1000);
+      }, config.games.changeQuestionTime);
       return;
     }
 
@@ -83,6 +80,6 @@ Page({
           gameUtils.stopCountDown(that);
         }
       })
-    }, 1000);
+    }, config.games.changeQuestionTime);
   }
 })

@@ -6,10 +6,10 @@
   <view class='game-answer-ctn'>
     <block wx:for='{{AnswerOptions}}'>
       <view class='game-option-ctn'>
-        <a wx:if='{{TrueAnswer == item}}' class="game-answer-option {{ActiveIndex == index && active == -1  ? 'game-option-success' : '' }}" data-answer-index='{{index}}' data-true-answer='{{TrueAnswer}}' data-answer-option='{{item}}' bindtap='checkAnswer'>
+        <a wx:if='{{TrueAnswer == item}}' class="game-answer-option {{ActiveIndex == index ? 'game-option-success' : '' }}" data-answer-index='{{index}}' data-true-answer='{{TrueAnswer}}' data-answer-option='{{item}}' bindtap='checkAnswer'>
           <text>{{item}}</text>          
         </a>
-        <a wx:else class="game-answer-option {{ActiveIndex == index && active == -1  ? 'game-option-error' : '' }}" data-answer-index='{{index}}' data-true-answer='{{TrueAnswer}}' data-answer-option='{{item}}' bindtap='checkAnswer'>
+        <a wx:else class="game-answer-option {{ActiveIndex == index ? 'game-option-error' : '' }}" data-answer-index='{{index}}' data-true-answer='{{TrueAnswer}}' data-answer-option='{{item}}' bindtap='checkAnswer'>
           <text>{{item}}</text>          
         </a>
       </view>

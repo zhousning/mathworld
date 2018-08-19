@@ -26,9 +26,7 @@ App({
   onHide: function() {
     //appUtils.addScore();
   },
-
   globalData: {
-    userInfo: null,
-    isVictory: false
+    userInfo: null
   }
 })

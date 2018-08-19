@@ -62,7 +62,7 @@ var appUtil = {
         success: function (res) {
           if (res.confirm) {
             appUtil.appLogin();
-          } 
+          }
         }
       })
     }

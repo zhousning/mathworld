@@ -1,26 +1,27 @@
 <!--pages/score/score.wxml-->
 <view class='container score-ctn'>
   <view class='score-my-ctn'>
-    <text>{{myScore}}</text>
-    <text>lv{{myRank}}</text>
+    <text>{{myScore}}分</text>
+    <text>----</text>
+    <text>Lv {{myRank}}</text>
   </view>
-  <scroll-view scroll-y='true' class='score-item-ctn'>
+  <view class='score-item-ctn'>
     <block wx:for='{{scores}}'>
       <view class='score-item'>
-        <view class='score-item-rank'>
+        <view class='score-item-index'>
           <text>{{index+1}}</text>
         </view>
         <view class='score-item-userinfo'>
           <image src='{{item.avatarurl}}' class='score-item-avatarurl' mode='cover'></image>
-          <text>{{item.nickname}}</text>
-        </view>
-        <view class='score-item-mark'>
-          <text>{{item.mark}}</text>
+          <view class='score-item-mark'>
+            <text>{{item.nickname}}</text>
+            <text>{{item.mark}}</text>
+          </view>
         </view>
         <view class='score-item-rank'>
-          <text>{{item.rank}}</text>
+          <text>Lv {{item.rank}}</text>
         </view>
       </view>
     </block>
-  </scroll-view>
+  </view>
 </view>

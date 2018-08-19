@@ -4,14 +4,12 @@ const appUtils = require('../../libs/app-utils.js')
 
 Page({
   data: {
-    isVictory: false,
-    rank: 1,
+    rank: 1
   },
 
   onLoad: function (options) {
     var that = this;
     that.setData({
-      isVictory: app.globalData.isVictory,
       rank: wx.getStorageSync('rank')
     })
     wx.setNavigationBarTitle({

@@ -1,0 +1,16 @@
+<!--pages/victory/victory.wxml-->
+<view class="container victory-fail-ctn">
+  <view class='victory-status-ctn'>
+    <view class='victory-success-status'>
+      <text>失败</text>
+    </view>
+    <view class='victory-rank-status'>
+      <text>当前 {{rank}} 级</text>
+    </view>
+  </view>
+  <view class='victory-operator-ctn'>
+
+      <button class='transparent-btn victory-next-btn' bindtap='goNext'>再玩一局</button>
+      <button class='transparent-btn victory-inex-btn' bindtap='goIndex'>休息一下</button>
+  </view>
+</view>

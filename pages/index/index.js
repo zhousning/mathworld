@@ -7,23 +7,10 @@ Page({
   data: {
     userInfo: {},
     hasUserInfo: false,
-    hasOpenId: true,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
 
   onLoad: function(options) {
-    /*var openId = wx.getStorageSync('openId');
-    if (openId) {
-      this.setData({
-        hasOpenId: true
-      })
-    } else {
-      app.loginReadyCallback = () => {
-        this.setData({
-          hasOpenId: true
-        })
-      }
-    }*/
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -68,14 +55,6 @@ Page({
           });
         }
       });
-    }
-  },
-  login: function() {
-    var isLogin = appUtils.appLogin();
-    if (isLogin) {
-      this.setData({
-        hasOpenId: true
-      })
     }
   },
   startGame: function() {
