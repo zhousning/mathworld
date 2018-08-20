@@ -1,6 +1,10 @@
 <!--pages/treasure/treasure.wxml-->
-<view class='container treasure-ctn'>
-  <block wx:for='{{Badge}}'>
+<view class='container'>
+<view class='treasure-tip-ctn'>
+<text>距离宝藏还差 {{TollGate - Rank}} 步</text>
+</view>
+<view class='treasure-ctn'>
+<block wx:for='{{Badge}}'>
     <view class='treasure-item'>
       <view wx:if='{{item <= Rank}}' class="treasure-item-mask">
         {{item}}
@@ -8,4 +12,8 @@
       <view class="treasure-item-badge  {{item <= Rank ? '' : 'treasure-lock'}}"></view>
     </view>
   </block>
+  <view class='treasure-item-gold'>
+    <view class="treasure-gold treasure-gold-badge"></view>
+  </view>
+</view>
 </view>

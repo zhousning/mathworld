@@ -6,6 +6,7 @@ Page({
 
   data: {
     Badge: [],
+    TollGate: config.games.tollGate,
     Rank: 1
   },
 
@@ -15,7 +16,7 @@ Page({
     var rank = wx.getStorageSync('rank');
 
     var arr = [];
-    for (var i = 1; i <= 30; i++) {
+    for (var i = 1; i <= config.games.tollGate; i++) {
       arr.push(i);
     }
 
