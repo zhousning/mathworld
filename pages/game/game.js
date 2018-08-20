@@ -13,7 +13,6 @@ Page({
     TrueAnswer: 0,
     GameBackground: '',
     CountDown: 0,
-    ProgressValue: 0,
     Timer: null,
     time: gameUtils.config.countDownMax,
     ActiveTimeOut: 0,

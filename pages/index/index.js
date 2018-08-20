@@ -70,6 +70,11 @@ Page({
     wx.navigateTo({
       url: '../score/score'
     });
+  },
+  goTreasure: function() {
+    wx.navigateTo({
+      url: '../treasure/treasure',
+    })
   }
 
 })

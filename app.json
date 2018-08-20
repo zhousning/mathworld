@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/index/index",
+        "pages/treasure/treasure",
+   
     "pages/victory-success/victory-success",
     "pages/victory-fail/victory-fail",
     "pages/score/score",
@@ -9,8 +11,8 @@
   "window": {
     "navigationBarBackgroundColor": "#FFFFFE",
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "小程序",
-    "backgroundColor": "#00B26A",
+    "navigationBarTitleText": "够味烧脑",
+    "backgroundColor": "#fffffe",
     "backgroundTextStyle": "light",
     "enablePullDownRefresh": false
   }

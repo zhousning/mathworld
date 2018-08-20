@@ -14,5 +14,6 @@
     <button wx:if='{{!hasUserInfo && canIUse}}' class='index-start-game-btn index-btn' open-type="getUserInfo" bindgetuserinfo='getUserInfo'>开始烧脑</button>
     <button wx:else class='index-start-game-btn index-btn' bindtap='startGame'>开始烧脑</button>
     <button class='index-check-score-btn index-btn' bindtap='checkScore'>烧脑排行</button>
+    <button class='index-treasure-btn index-btn' bindtap='goTreasure'>我的烧脑</button>
   </view>
 </view>

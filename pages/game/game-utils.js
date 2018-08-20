@@ -122,14 +122,11 @@ var gameUtil = {
   startCountDown: function(that) {
     //var time = gameUtil.config.countDownMax;
     var time = that.data.time;
-    var progressValue = that.data.ProgressValue;
     that.data.Timer = setInterval(function () {
       time = time - 1;
-      progressValue = progressValue + 1;
       that.data.time = time;
       that.setData({
-        CountDown: time,
-        ProgressValue: progressValue
+        CountDown: time
       });
       if (time == 0) {
         gameUtil.stopCountDown(that);

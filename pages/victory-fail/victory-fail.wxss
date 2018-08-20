@@ -1,2 +1,2 @@
 /* pages/victory-fail/victory-fail.wxss */
-@import '../victory-success/victory-success.wxss'
+@import '../victory-success/victory-success.wxss';

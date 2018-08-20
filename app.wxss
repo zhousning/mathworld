@@ -1,5 +1,5 @@
 @import './libs/weui.wxss';
-@import './libs/image-base64.wxss'
+@import './libs/image-base64.wxss';
 
 page {
   height: 100%;

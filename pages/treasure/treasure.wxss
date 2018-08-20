@@ -1,0 +1,41 @@
+@import '../../libs/image-base64.wxss';
+
+.treasure-ctn {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.treasure-item {
+  width: 150rpx;
+  height: 150rpx;
+  border: 1rpx solid #dfdfdf;
+  box-shadow: 0 0 10px #eee;
+  position: relative;
+  margin: 16rpx;
+}
+
+.treasure-item-badge {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 40;
+  background-repeat: no-repeat;
+  background-size: 60%;
+  background-position: center;
+}
+
+.treasure-item-mask {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 55rpx;
+}
+
+.treasure-item-mask-none {
+  display: none;
+}

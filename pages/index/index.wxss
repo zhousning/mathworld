@@ -36,3 +36,7 @@
 .index-start-game-btn {
   margin-bottom: 40rpx;
 }
+
+.index-check-score-btn{
+  margin-bottom: 40rpx;
+}

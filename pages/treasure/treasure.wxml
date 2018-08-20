@@ -1,0 +1,11 @@
+<!--pages/treasure/treasure.wxml-->
+<view class='container treasure-ctn'>
+  <block wx:for='{{Badge}}'>
+    <view class='treasure-item'>
+      <view wx:if='{{item <= Rank}}' class="treasure-item-mask">
+        {{item}}
+      </view>
+      <view class="treasure-item-badge  {{item <= Rank ? '' : 'treasure-lock'}}"></view>
+    </view>
+  </block>
+</view>
