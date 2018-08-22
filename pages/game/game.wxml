@@ -1,6 +1,6 @@
 <view class='container'>
   <view class='game-question-ctn' style='background-image: linear-gradient({{GameBackground}})'>
-    <text class='game-question-text'>{{ParamA}}{{Operator}}{{ParamB}}=?</text>
+    <text class='game-question-text'>{{ParamA}}{{Operator}}{{ParamB}}={{Result}}</text>
     <text class='game-countdown-text'>{{CountDown}}</text>
   </view>
   <view class='game-answer-ctn'>

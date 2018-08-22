@@ -16,7 +16,8 @@ var gameUtil = {
     var arr = ['+', '-', '×'];
     return arr[index]
   },
-  prepareOptions: function (result) {
+  //产生包括result在内的四个不同数字的数组(选项)
+  prepareOptions: function(result) {
     var options = [result];
     for (var i = 1; i <= 3; i++) {
       var option = gameUtil.setAnswerOption(options, result);
@@ -25,7 +26,7 @@ var gameUtil = {
     options.sort(gameUtil.randomsort);
     return options;
   },
-  setAnswerOption: function (optionsArr, target) {
+  setAnswerOption: function(optionsArr, target) {
     var result = target;
     var options = optionsArr;
     var resultAbs = Math.abs(result);
@@ -52,10 +53,10 @@ var gameUtil = {
       return option;
     }
   },
-  randomsort: function (a, b) {
-    return Math.random() > .5 ? -1 : 1;
+  randomsort: function() {
+    return Math.random() > 0.5 ? -1 : 1;
   },
-  calculateResult: function (Operator, ParamA, ParamB) {
+  calculateResult: function(Operator, ParamA, ParamB) {
     var result = 0;
     switch (Operator) {
       case '+':
@@ -73,56 +74,160 @@ var gameUtil = {
     }
     return result;
   },
+  _resultObj: function(pa, op, pb, rs, ao, ta) {
+    var result = {
+      ParamA: pa,
+      Operator: op,
+      ParamB: pb,
+      Result: rs,
+      AnswerOptions: ao,
+      TrueAnswer: ta
+    }
+    return result;
+  },
+  //1.普通计算：例：5*3=?
+  _ordinaryStrategy: function(pa, op, pb, ta) {
+    var answerOptions = gameUtil.prepareOptions(ta);
+    var standardResult = ta;
+    var result = gameUtil._resultObj(pa, op, pb, '?', answerOptions, standardResult);
+    return result;
+  },
+  //2.一个因子：5*？=15
+  _oneFactor: function(pa, op, pb, ta) {
+    var answerOptions = gameUtil.prepareOptions(pb);
+    var standardResult = pb;
+    var result = gameUtil._resultObj(pa, op, '?', ta, answerOptions, standardResult);
+    return result;
+  },
+  //3.两个因子：?*?=9
+  _twoFactor: function(pa, op, pb, ta) {
+    var standardResult = pa + ', ' + pb;
+    var arrA = gameUtil.prepareOptions(pa);
+    var arrB = gameUtil.prepareOptions(pb);
+    var answerOptions = [];
+    for (var i = 0; i < arrA.length; i++) {
+      var str = arrA[i] + ', ' + arrB[i];
+      answerOptions.push(str);
+    }
+
+    if (answerOptions.indexOf(standardResult) == -1) {
+      answerOptions[gameUtil.getRandom(0, 3)] = standardResult;
+    }
+
+    var result = gameUtil._resultObj('?', op, '?', ta, answerOptions, standardResult);
+    return result;
+  },
+  //4.一个因子+结果：？*3=？
+  _oneFactorAndResult: function(pa, op, pb, ta) {
+    var standardResult = pa + ', ' + ta;
+    var arrA = gameUtil.prepareOptions(pa);
+    var arrB = gameUtil.prepareOptions(ta);
+    var answerOptions = [];
+    for (var i = 0; i < arrA.length; i++) {
+      var str = arrA[i] + ', ' + arrB[i];
+      answerOptions.push(str);
+    }
+
+    if (answerOptions.indexOf(standardResult) == -1) {
+      answerOptions[gameUtil.getRandom(0, 3)] = standardResult;
+    }
+
+    var result = gameUtil._resultObj('?', op, pb, '?', answerOptions, standardResult);
+    return result;
+  },
+  getRandomOperator: function() {
+    var operatorArr = ['+', '-', '×', '÷'];
+    operatorArr.sort(gameUtil.randomsort);
+    return operatorArr;
+  },
+  //5.一个运算符：3?3=9
+  _oneOperator: function(pa, op, pb, ta) {
+    var standardResult = op;
+    var answerOptions = gameUtil.getRandomOperator();
+    var result = gameUtil._resultObj(pa, '?', pb, ta, answerOptions, standardResult);
+    return result;
+  },
+  //6.一个因子+一个运算符：??3=9
+  _oneFactorAndOperator: function(pa, op, pb, ta) {
+    var standardResult = pa + '' + op;
+    var arrA = gameUtil.prepareOptions(pa);
+    var arrB = gameUtil.getRandomOperator();
+
+    var cache = [];
+    for (var i=0; i<arrA.length; i++) {
+      cache.push(arrA[i]+''+arrB[i]);
+    }
+
+    if (cache.indexOf(standardResult) == -1) {
+      cache[gameUtil.getRandom(0,3)] = standardResult;
+    }
+    var answerOptions = cache;
+    var result = gameUtil._resultObj('?', '?', pb, ta, answerOptions, standardResult);
+    return result;
+  },
+  //7.一个因子+一个运算符+一个结果: ??4=?
+  _oneFactorAndOperatorAndResult: function (pa, op, pb, ta) {
+    var standardResult = pa + '' + op +', '+ ta;
+    var arrA = gameUtil.prepareOptions(pa);
+    var arrB = gameUtil.getRandomOperator();
+    var arrC = gameUtil.prepareOptions(ta);
+
+    var cache = [];
+    for (var i=0; i<arrA.length; i++) {
+      cache.push(arrA[i] + '' + arrB[i] + ', ' + arrC[i]);
+    }
+    if (cache.indexOf(standardResult) == -1) {
+      cache[gameUtil.getRandom(0, 3)] = standardResult;
+    }
+    var answerOptions = cache;
+    var result = gameUtil._resultObj('?', '?', pb, '?', answerOptions, standardResult);
+    return result;
+  },
   prepareQuestion: function(that, rank) {
-    var pa = 0;
-    var pb = 0;
-
-    rank = rank || gameUtil.getRandom(1, 5);//避免rank取不到
-    if (1<= rank && rank <= 4) {
-      pa = gameUtil.getRandom(1, 9);
-      pb = gameUtil.getRandom(Math.pow(10, rank-1), Math.pow(10, rank)-1);
-    } else if (5 <= rank && rank <= 7) {
-      pa = gameUtil.getRandom(10, 99);
-      pb = gameUtil.getRandom(Math.pow(10, rank - 4), Math.pow(10, rank - 3) - 1);
-    } else if (8 <= rank && rank <=9) {
-      pa = gameUtil.getRandom(100, 999);
-      pb = gameUtil.getRandom(Math.pow(10, rank - 6), Math.pow(10, rank - 5) - 1);
-    } else {
-      pa = gameUtil.getRandom(1000, 9999);
-      pb = gameUtil.getRandom(Math.pow(10, rank - 7), Math.pow(10, rank - 6) - 1);
-    }
-
-    var rd = gameUtil.getRandom(1, 10);
-    if (rd > 5) {
-      var t = pa;
-      pa = pb;
-      pb = t;
-    }
-
+    var pa = gameUtil.getRandom(1, 100);
+    var pb = gameUtil.getRandom(1, 100);
     var op = gameUtil.getOperator();
     var ta = gameUtil.calculateResult(op, pa, pb);
     var bg = gameUtil.background_score[op][0];
     var sc = gameUtil.background_score[op][1];
-    var result = {
-      ParamA: pa,
-      ParamB: pb,
-      Operator: op,
-      TrueAnswer: ta,
-      GameBackground: bg,
-      Score: sc,
-      time: gameUtil.config.countDownMax,
-      CountDown: gameUtil.config.countDownMax,
-      AnswerOptions: gameUtil.prepareOptions(ta),
-    };
+
+    var result = null;
+    switch (gameUtil.getRandom(1, 7)) {
+      case 1:
+        result = gameUtil._ordinaryStrategy(pa, op, pb, ta);
+        break;
+      case 2:
+        result = gameUtil._oneFactor(pa, op, pb, ta);
+        break;
+      case 3:
+        result = gameUtil._twoFactor(pa, op, pb, ta);
+        break;
+      case 4:
+        result = gameUtil._oneFactorAndResult(pa, op, pb, ta);
+        break;
+      case 5:
+        result = gameUtil._oneOperator(pa, op, pb, ta);
+        break;
+      case 6:
+        result = gameUtil._oneFactorAndOperator(pa, op, pb, ta);
+        break;
+      case 7:
+        result = gameUtil._oneFactorAndOperatorAndResult(pa, op, pb, ta);
+        break;
+    }
+    result['Score'] = sc;
+    result['GameBackground'] = bg;
+    result['time'] = gameUtil.config.countDownMax;
+    result['CountDown'] = gameUtil.config.countDownMax;
     that.setData(result);
+
     if (that.data.Timer != null) {
       gameUtil.stopCountDown(that);
     }
   },
   startCountDown: function(that) {
-    //var time = gameUtil.config.countDownMax;
     var time = that.data.time;
-    that.data.Timer = setInterval(function () {
+    that.data.Timer = setInterval(function() {
       time = time - 1;
       that.data.time = time;
       that.setData({

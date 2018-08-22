@@ -10,6 +10,7 @@ Page({
     Operator: '',
     Score: 0,
     AnswerOptions: [],
+    Result: '?',
     TrueAnswer: 0,
     GameBackground: '',
     CountDown: 0,
@@ -49,8 +50,7 @@ Page({
     })
     
     if (trueAnswer == answerOption) {
-      var score = gameUtils.background_score[that.data.Operator][1];
-      var currentScore = wx.getStorageSync('score') + score;
+      var currentScore = wx.getStorageSync('score') + 1;
       var rank = wx.getStorageSync('rank');
       wx.setStorageSync('score', currentScore);
 
