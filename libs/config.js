@@ -16,7 +16,7 @@ var configs = {
   games: {
     rankScore: 10,
     changeQuestionTime: 100,
-    tollGate: 30
+    tollGate: 49
   }
 }
 

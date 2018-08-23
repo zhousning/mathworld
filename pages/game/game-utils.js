@@ -154,26 +154,26 @@ var gameUtil = {
     var arrB = gameUtil.getRandomOperator();
 
     var cache = [];
-    for (var i=0; i<arrA.length; i++) {
-      cache.push(arrA[i]+''+arrB[i]);
+    for (var i = 0; i < arrA.length; i++) {
+      cache.push(arrA[i] + '' + arrB[i]);
     }
 
     if (cache.indexOf(standardResult) == -1) {
-      cache[gameUtil.getRandom(0,3)] = standardResult;
+      cache[gameUtil.getRandom(0, 3)] = standardResult;
     }
     var answerOptions = cache;
     var result = gameUtil._resultObj('?', '?', pb, ta, answerOptions, standardResult);
     return result;
   },
   //7.一个因子+一个运算符+一个结果: ??4=?
-  _oneFactorAndOperatorAndResult: function (pa, op, pb, ta) {
-    var standardResult = pa + '' + op +', '+ ta;
+  _oneFactorAndOperatorAndResult: function(pa, op, pb, ta) {
+    var standardResult = pa + '' + op + ', ' + ta;
     var arrA = gameUtil.prepareOptions(pa);
     var arrB = gameUtil.getRandomOperator();
     var arrC = gameUtil.prepareOptions(ta);
 
     var cache = [];
-    for (var i=0; i<arrA.length; i++) {
+    for (var i = 0; i < arrA.length; i++) {
       cache.push(arrA[i] + '' + arrB[i] + ', ' + arrC[i]);
     }
     if (cache.indexOf(standardResult) == -1) {
@@ -192,27 +192,30 @@ var gameUtil = {
     var sc = gameUtil.background_score[op][1];
 
     var result = null;
-    switch (gameUtil.getRandom(1, 7)) {
-      case 1:
+    switch ((rank - 1) / 7) {
+      case 0:
         result = gameUtil._ordinaryStrategy(pa, op, pb, ta);
+        break;
+      case 1:
+        result = gameUtil._oneOperator(pa, op, pb, ta);
         break;
       case 2:
         result = gameUtil._oneFactor(pa, op, pb, ta);
         break;
       case 3:
-        result = gameUtil._twoFactor(pa, op, pb, ta);
-        break;
-      case 4:
-        result = gameUtil._oneFactorAndResult(pa, op, pb, ta);
-        break;
-      case 5:
-        result = gameUtil._oneOperator(pa, op, pb, ta);
-        break;
-      case 6:
         result = gameUtil._oneFactorAndOperator(pa, op, pb, ta);
         break;
-      case 7:
+      case 4:
+        result = gameUtil._twoFactor(pa, op, pb, ta);
+        break;
+      case 5:
+        result = gameUtil._oneFactorAndResult(pa, op, pb, ta);
+        break;
+      case 6:
         result = gameUtil._oneFactorAndOperatorAndResult(pa, op, pb, ta);
+        break;
+      default:
+        result = gameUtil._ordinaryStrategy(pa, op, pb, ta);
         break;
     }
     result['Score'] = sc;
