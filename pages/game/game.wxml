@@ -1,16 +1,23 @@
 <view class='container'>
   <view class='game-question-ctn' style='background-image: linear-gradient({{GameBackground}})'>
-    <text class='game-question-text'>{{ParamA}}{{Operator}}{{ParamB}}={{Result}}</text>
+    <view class='game-question-text'>
+      <text class='param-a'>{{ParamA}}</text>
+      <text class='operator'>{{Operator}}</text>
+      <text class='param-b'>{{ParamB}}</text>
+      <text class='equality-sign'>=</text>
+      <text class='result'>{{Result}}</text>
+    </view>
     <text class='game-countdown-text'>{{CountDown}}</text>
+    <text class='game-surplus-text'>距离通关还剩{{Surplus}}道题</text>
   </view>
   <view class='game-answer-ctn'>
     <block wx:for='{{AnswerOptions}}'>
       <view class='game-option-ctn'>
         <a wx:if='{{TrueAnswer == item}}' class="game-answer-option {{ActiveIndex == index ? 'game-option-success' : '' }}" data-answer-index='{{index}}' data-true-answer='{{TrueAnswer}}' data-answer-option='{{item}}' bindtap='checkAnswer'>
-          <text>{{item}}</text>          
+          <text>{{item}}</text>
         </a>
         <a wx:else class="game-answer-option {{ActiveIndex == index ? 'game-option-error' : '' }}" data-answer-index='{{index}}' data-true-answer='{{TrueAnswer}}' data-answer-option='{{item}}' bindtap='checkAnswer'>
-          <text>{{item}}</text>          
+          <text>{{item}}</text>
         </a>
       </view>
     </block>

@@ -18,6 +18,7 @@ Page({
     time: gameUtils.config.countDownMax,
     ActiveTimeOut: 0,
     RedirectTimeOut: 0,
+    Surplus: ''
   },
   onLoad: function(options) {
     var that = this;
@@ -37,6 +38,11 @@ Page({
   },
   onShow: function() {
     var that = this;
+    var finishNumber = wx.getStorageSync('score');
+    var surplus = config.games.rankScore - finishNumber;
+    that.setData({
+      Surplus: surplus
+    });
     gameUtils.startCountDown(that);
   },
   checkAnswer: function(e) {

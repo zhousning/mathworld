@@ -7,8 +7,7 @@
   background: white;
   background-size: 200% auto;
   color: white;
-    box-shadow: 0 0 20px #eee;
-
+  box-shadow: 0 0 20px #eee;
 }
 
 .game-countdown-text {
@@ -30,6 +29,31 @@
   letter-spacing: 13rpx;
 }
 
+.game-surplus-text {
+  font-size: 35rpx;
+  text-align: center;
+  margin-top: 15rpx;
+}
+
+.game-question-text text {
+  margin-right: 15rpx;
+}
+
+.param-a {
+}
+
+.operator {
+}
+
+.param-b {
+}
+
+.equality-sign {
+}
+
+.result {
+}
+
 .game-answer-ctn {
   flex-grow: 1;
   display: flex;
@@ -45,7 +69,6 @@
   position: relative;
   font-size: 70rpx;
   color: #6b6b6b;
-
 }
 
 .game-answer-option {
@@ -54,8 +77,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-    border-radius:50%;
-  background-size:100% atuo;
+  border-radius: 50%;
+  background-size: 100% atuo;
 }
 
 .game-option-opposite {
@@ -67,13 +90,12 @@
 
 .game-option-success {
   color: white;
-background-image:linear-gradient(45deg, #00FF99 10%, #00CC99 100%);
+  background-image: linear-gradient(45deg, #0f9 10%, #0c9 100%);
 }
 
 .game-option-error {
-    color: white;
-background-image:linear-gradient(45deg, #FF9E7E 100%, #FF5253 100%);
-
+  color: white;
+  background-image: linear-gradient(45deg, #ff9e7e 100%, #ff5253 100%);
 }
 
 .game-option-front-active {
@@ -81,7 +103,7 @@ background-image:linear-gradient(45deg, #FF9E7E 100%, #FF5253 100%);
 }
 
 .game-option-opposite-active {
-  display: flex
+  display: flex;
 }
 
 .game-answer-status {

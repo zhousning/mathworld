@@ -192,7 +192,8 @@ var gameUtil = {
     var sc = gameUtil.background_score[op][1];
 
     var result = null;
-    switch ((rank - 1) / 7) {
+    var code = (rank - 1)/7; 
+    switch (Math.floor(code)) {
       case 0:
         result = gameUtil._ordinaryStrategy(pa, op, pb, ta);
         break;
