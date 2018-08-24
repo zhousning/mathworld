@@ -23,6 +23,9 @@ Page({
   onLoad: function(options) {
     var that = this;
     var rank = wx.getStorageSync('rank');
+    wx.setNavigationBarTitle({
+      title: config.titles.game
+    })
     gameUtils.prepareQuestion(that, parseInt(rank));
   },
   //redirectTo or navigatBack

@@ -1,8 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/treasure/treasure",
     "pages/victory-success/victory-success",
+    "pages/treasure/treasure",
     "pages/victory-fail/victory-fail",
     "pages/score/score",
     "pages/game/game"

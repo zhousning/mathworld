@@ -23,10 +23,15 @@ App({
       }
     })
   },
-  onHide: function() {
-    //appUtils.addScore();
-  },
   globalData: {
     userInfo: null
+  },
+  createShareMessage: function() {
+    var message = {
+      title: '这智商，我也是醉了',
+      imageUrl: 'https://www.bafangjie.cn/assets/share.jpg',
+      path: '/pages/index/index'
+    }
+    return message;
   }
 })

@@ -10,6 +10,12 @@ Page({
     Rank: 1
   },
 
+  onLoad: function () {
+    wx.setNavigationBarTitle({
+      title: config.titles.treasure
+    })
+  },
+
   onShow: function () {
     var that = this;
     var openid = wx.getStorageSync('openId');
@@ -46,5 +52,9 @@ Page({
         }
       })
     }
+  },
+
+  onShareAppMessage: function () {
+    return app.createShareMessage();
   }
 })

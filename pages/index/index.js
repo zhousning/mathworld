@@ -75,6 +75,10 @@ Page({
     wx.navigateTo({
       url: '../treasure/treasure',
     })
+  },
+
+  onShareAppMessage: function () {
+    return app.createShareMessage();
   }
 
 })

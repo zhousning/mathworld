@@ -9,8 +9,8 @@
     </view>
   </view>
   <view class='victory-operator-ctn'>
-
-      <button class='transparent-btn victory-next-btn' bindtap='goNext'>再玩一局</button>
-      <button class='transparent-btn victory-inex-btn' bindtap='goIndex'>休息一下</button>
+    <button class='transparent-btn victory-next-btn' bindtap='goNext'>再玩一局</button>
+    <button class='transparent-btn victory-next-btn' bindtap='goIndex'>休息一下</button>
+    <button class='transparent-btn victory-inex-btn' open-type='share'>秀给老友</button>
   </view>
 </view>

@@ -1,6 +1,7 @@
 // pages/victory/victory.js
 const app = getApp()
 const appUtils = require('../../libs/app-utils.js')
+const config = require('../../libs/config.js')
 
 Page({
   data: {
@@ -9,12 +10,12 @@ Page({
 
   onLoad: function (options) {
     var that = this;
+    wx.setNavigationBarTitle({
+      title: config.titles.success
+    })
     that.setData({
       rank: wx.getStorageSync('rank')
     })
-    wx.setNavigationBarTitle({
-      title: '',
-    });
   },
 
   onShow: function () {
@@ -35,5 +36,9 @@ Page({
         });
       }
     });
+  },
+
+  onShareAppMessage: function () {
+    return app.createShareMessage();
   }
 })

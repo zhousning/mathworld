@@ -14,6 +14,12 @@ Page({
     myRank: 1
   },
 
+  onLoad: function() {
+    wx.setNavigationBarTitle({
+      title: config.titles.score
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -39,5 +45,9 @@ Page({
         });
       }
     })
+  },
+
+  onShareAppMessage: function () {
+    return app.createShareMessage();
   }
 })
