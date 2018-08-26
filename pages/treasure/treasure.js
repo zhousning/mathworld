@@ -2,18 +2,10 @@ const config = require('../../libs/config.js')
 
 
 Page({
-
-
   data: {
     Badge: [],
     TollGate: config.games.tollGate,
     Rank: 1
-  },
-
-  onLoad: function () {
-    wx.setNavigationBarTitle({
-      title: config.titles.treasure
-    })
   },
 
   onShow: function () {
@@ -32,6 +24,9 @@ Page({
         Rank: rank
       })
     } else {
+      wx.showLoading({
+        title: '加载中',
+      })
       wx.request({
         url: config.routes.getRank,
         header: {
@@ -42,13 +37,13 @@ Page({
           openid: openid
         },
         success: function (res) {
-          console.log(res);
           var rank = parseInt(res.data.rank);
           wx.setStorageSync('rank', rank);
           that.setData({
             Badge: arr,
             Rank: rank
           })
+          wx.hideLoading();
         }
       })
     }

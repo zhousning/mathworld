@@ -183,42 +183,81 @@ var gameUtil = {
     var result = gameUtil._resultObj('?', '?', pb, '?', answerOptions, standardResult);
     return result;
   },
+  getStrategy: function (pa, op, pb, ta, rank) {
+    var result = null;
+    var code = 1;
+
+    if ((1<= rank && rank <=10) || (41<=rank && rank <=60) ) {
+      code = gameUtil.getRandom(1, 7);
+    } else if (11<=rank && rank <=25) {
+      code = gameUtil.getRandom(1, 3);
+    } else {
+      //26——40
+      code = gameUtil.getRandom(1, 5);
+    }
+
+    switch (code) {
+      case 1:
+        result = gameUtil._ordinaryStrategy(pa, op, pb, ta);
+        break;
+      case 2:
+        result = gameUtil._oneOperator(pa, op, pb, ta);
+        break;
+      case 3:
+        result = gameUtil._oneFactor(pa, op, pb, ta);
+        break;
+      case 4:
+        result = gameUtil._oneFactorAndOperator(pa, op, pb, ta);
+        break;
+      case 5:
+        result = gameUtil._twoFactor(pa, op, pb, ta);
+        break;
+      case 6:
+        result = gameUtil._oneFactorAndResult(pa, op, pb, ta);
+        break;
+      case 7:
+        result = gameUtil._oneFactorAndOperatorAndResult(pa, op, pb, ta);
+        break;
+    }
+    return result;
+  },
+  getFactor: function(rank) {
+    var pa = 1, pb = 1;
+    var result = [];
+    if ((1 <= rank && rank <= 15) || (26 <= rank && rank <= 30) || (41 <= rank && rank <= 45)) {
+      pa = gameUtil.getRandom(1, 9);
+    } else if ((16 <= rank && rank <= 25) || (31 <= rank && rank <= 40) || (46 <= rank && rank <= 55)) {
+      pa = gameUtil.getRandom(10, 99);
+    } else {
+      pa = gameUtil.getRandom(100, 999);
+    }
+
+    if ((6 <= rank && rank <= 10) || (16 <= rank && rank <= 20) || (31 <= rank && rank <= 35) || (46 <= rank && rank <= 50)) {
+      pb = gameUtil.getRandom(10, 99);
+    } else if ((11 <= rank && rank <= 15) || (21 <= rank && rank <= 30) || (36 <= rank && rank <= 45) || (51 <= rank && rank <= 60)) {
+      pa = gameUtil.getRandom(100, 999);
+    } else {
+      pb = gameUtil.getRandom(1, 9);  //1 <= rank && rank <= 5
+    }
+
+    var rd = gameUtil.getRandom(1, 10);
+    if (rd > 5) {
+      var t = pa;
+      pa = pb;
+      pb = t;
+    }
+    result.push(pa, pb);
+    return result;
+  },
   prepareQuestion: function(that, rank) {
-    var pa = gameUtil.getRandom(1, 100);
-    var pb = gameUtil.getRandom(1, 100);
+    var pa = gameUtil.getFactor(rank)[0];
+    var pb = gameUtil.getFactor(rank)[1]; 
     var op = gameUtil.getOperator();
     var ta = gameUtil.calculateResult(op, pa, pb);
     var bg = gameUtil.background_score[op][0];
     var sc = gameUtil.background_score[op][1];
 
-    var result = null;
-    var code = (rank - 1)/7; 
-    switch (Math.floor(code)) {
-      case 0:
-        result = gameUtil._ordinaryStrategy(pa, op, pb, ta);
-        break;
-      case 1:
-        result = gameUtil._oneOperator(pa, op, pb, ta);
-        break;
-      case 2:
-        result = gameUtil._oneFactor(pa, op, pb, ta);
-        break;
-      case 3:
-        result = gameUtil._oneFactorAndOperator(pa, op, pb, ta);
-        break;
-      case 4:
-        result = gameUtil._twoFactor(pa, op, pb, ta);
-        break;
-      case 5:
-        result = gameUtil._oneFactorAndResult(pa, op, pb, ta);
-        break;
-      case 6:
-        result = gameUtil._oneFactorAndOperatorAndResult(pa, op, pb, ta);
-        break;
-      default:
-        result = gameUtil._ordinaryStrategy(pa, op, pb, ta);
-        break;
-    }
+    var result = gameUtil.getStrategy(pa, op, pb, ta, rank);
     result['Score'] = sc;
     result['GameBackground'] = bg;
     result['time'] = gameUtil.config.countDownMax;

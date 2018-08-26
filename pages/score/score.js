@@ -3,10 +3,6 @@ const config = require('../../libs/config.js')
 
 
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     scores: [],
     userInfo: {},
@@ -14,18 +10,12 @@ Page({
     myRank: 1
   },
 
-  onLoad: function() {
-    wx.setNavigationBarTitle({
-      title: config.titles.score
-    })
-  },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onShow: function (options) {
     var openid = wx.getStorageSync('openId');
     var that = this;
+    wx.showLoading({
+      title: '加载中',
+    })
     wx.request({
       url: config.routes.topOneHundred,
       method: 'GET',
@@ -37,12 +27,12 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success: function(res) {
-        console.log(res);
         that.setData({
           myScore: res.data.myscore,
           myRank: res.data.myrank,
           scores: res.data.scores
         });
+        wx.hideLoading();
       }
     })
   },

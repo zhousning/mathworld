@@ -16,14 +16,7 @@ var configs = {
   games: {
     rankScore: 10,
     changeQuestionTime: 100,
-    tollGate: 49
-  },
-  titles: {
-    game: '烧脑进行时',
-    score: '烧脑排行',
-    treasure: '烧脑宝藏',
-    fail: '闯关失败',
-    success: '闯关成功'
+    tollGate: 60
   }
 }
 

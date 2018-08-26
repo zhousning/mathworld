@@ -1,4 +1,3 @@
-@import './libs/weui.wxss';
 @import './libs/image-base64.wxss';
 
 page {

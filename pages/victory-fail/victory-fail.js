@@ -10,9 +10,6 @@ Page({
 
   onLoad: function (options) {
     var that = this;
-    wx.setNavigationBarTitle({
-      title: config.titles.fail
-    });
     that.setData({
       rank: wx.getStorageSync('rank')
     })
