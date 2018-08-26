@@ -235,7 +235,7 @@ var gameUtil = {
     if ((6 <= rank && rank <= 10) || (16 <= rank && rank <= 20) || (31 <= rank && rank <= 35) || (46 <= rank && rank <= 50)) {
       pb = gameUtil.getRandom(10, 99);
     } else if ((11 <= rank && rank <= 15) || (21 <= rank && rank <= 30) || (36 <= rank && rank <= 45) || (51 <= rank && rank <= 60)) {
-      pa = gameUtil.getRandom(100, 999);
+      pb = gameUtil.getRandom(100, 999);
     } else {
       pb = gameUtil.getRandom(1, 9);  //1 <= rank && rank <= 5
     }
@@ -250,8 +250,9 @@ var gameUtil = {
     return result;
   },
   prepareQuestion: function(that, rank) {
-    var pa = gameUtil.getFactor(rank)[0];
-    var pb = gameUtil.getFactor(rank)[1]; 
+    var factors = gameUtil.getFactor(rank);
+    var pa = factors[0];
+    var pb = factors[1]; 
     var op = gameUtil.getOperator();
     var ta = gameUtil.calculateResult(op, pa, pb);
     var bg = gameUtil.background_score[op][0];
@@ -260,7 +261,6 @@ var gameUtil = {
     var result = gameUtil.getStrategy(pa, op, pb, ta, rank);
     result['Score'] = sc;
     result['GameBackground'] = bg;
-    result['time'] = gameUtil.config.countDownMax;
     result['CountDown'] = gameUtil.config.countDownMax;
     that.setData(result);
 

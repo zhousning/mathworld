@@ -23,7 +23,7 @@
   width: 100%;
   align-items: flex-end;
   justify-content: center;
-  background: 3;
+  flex-wrap:wrap;
   font-weight: 47;
   font-size: 85rpx;
   letter-spacing: 13rpx;

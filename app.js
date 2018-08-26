@@ -3,6 +3,7 @@ const config = require('./libs/config.js')
 
 App({
   onLaunch: function() {
+    wx.removeStorage({key: 'rank'});
     var openId = wx.getStorageSync('openId');
     if (!openId) {
       appUtils.appLogin();
